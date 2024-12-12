@@ -1,0 +1,22 @@
+.outer-container {
+    height: 100%;
+}
+
+.words-container {
+    margin-left: 50px;
+
+    > li {
+        margin-bottom: 15px;
+    }
+}
+
+.search-query-empty-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: gray;
+    font-size: 0.8rem;
+
+    height: 100%;
+}

@@ -1,0 +1,16 @@
+@use '../../styles/colors';
+@use '../../styles/variables';
+
+.container {
+    display: flex;
+    margin: 40px variables.$leftRightMargin;
+
+    .container__inner-left {
+        padding: 20px;
+        background-color: colors.$darkGray;
+    }
+
+    .container__inner-right {
+        width: 100%;
+    }
+}

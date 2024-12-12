@@ -1,21 +1,8 @@
 @use '../../../styles/colors';
+@use '../../../styles/shapes';
 
 $size: 30px;
 
 .star {
-    width: $size;
-    height: $size;
-    background-color: colors.$white;
-    clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-    );
+    @include shapes.star(colors.$white, $size);
 }

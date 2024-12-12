@@ -1,0 +1,65 @@
+@use '../../../styles/colors';
+@use '../../../styles/variables';
+@use '../../../styles/shapes';
+
+$starSize: 30px;
+
+.word-definition-card {
+    height: 50px;
+    border-radius: variables.$borderRadius;
+
+    background-color: colors.$white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    %star-base {
+        margin-right: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .blue-star {
+        @include shapes.star(colors.$blue, $starSize);
+        @extend %star-base;
+    }
+
+    .transparent-star {
+        @extend %star-base;
+    }
+}
+
+.word-definition-card__word-info {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    width: 100%;
+
+    * {
+        margin: 0 12px;
+    }
+
+    .word-definition-card__name {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .word-definition-card__part-of-speech {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .word-definition-card__definition {
+        font-size: 1.1rem;
+
+        max-width: 60ch;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+}

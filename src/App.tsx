@@ -2,18 +2,22 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Starred from './pages/Starred';
 import './styles/index.scss';
-import Layout from './components/layout/Layout';
+import { Layout } from './components';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="/starred" element={<Starred />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Home />} />
+                        <Route path="/starred" element={<Starred />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </Provider>
     );
 }
 
