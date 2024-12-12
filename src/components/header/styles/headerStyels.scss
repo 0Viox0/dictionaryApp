@@ -1,0 +1,32 @@
+@use '../../../styles/colors';
+@use '../../../styles/variables';
+
+.header {
+    background-color: colors.$blue;
+    width: auto;
+    height: 70px;
+
+    margin: 10px;
+    padding: 0 40px;
+    border-radius: variables.$borderRadius;
+
+    color: colors.$white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__page-name {
+        font-size: 1.8rem;
+    }
+
+    .header__stared-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        *:first-child {
+            margin-right: 10px;
+        }
+    }
+}
