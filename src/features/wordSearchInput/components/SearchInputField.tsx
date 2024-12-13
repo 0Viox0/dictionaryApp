@@ -1,10 +1,11 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { assets } from '../../../assets';
 import { text } from '../../../text/text';
 import '../styles/search-input.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { changeInputQuery } from '../../../redux/words/wordsSlice';
+import { useDebouncedValue } from '../../../hooks/useDebounce';
 
 const SearchInputField = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -12,9 +13,18 @@ const SearchInputField = () => {
         (state: RootState) => state.words.currentWordSearchQuery,
     );
 
+    const [value, setValue] = useState(currentSearchQuery);
+    const debouncedValue = useDebouncedValue(value, 300);
+
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeInputQuery(e.target.value));
+        setValue(e.target.value);
     };
+
+    useEffect(() => {
+        if (debouncedValue !== undefined) {
+            dispatch(changeInputQuery(debouncedValue));
+        }
+    }, [debouncedValue, dispatch]);
 
     return (
         <div className="input">
@@ -22,7 +32,7 @@ const SearchInputField = () => {
                 className="input__form"
                 type="text"
                 placeholder={text.inputSearchPlaceholder}
-                value={currentSearchQuery}
+                value={value}
                 onChange={handleOnChange}
             />
             <img
