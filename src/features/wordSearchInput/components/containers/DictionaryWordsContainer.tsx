@@ -36,14 +36,16 @@ const DictionaryWordsContainer = () => {
                 <InfoMessage text={text.nothingFound} />
             ) : (
                 <ul className="words-container">
-                    {words.map((word) => (
-                        <li>
-                            <WordListItem
-                                wordListItemInfo={word}
-                                key={word.name}
-                            />
-                        </li>
-                    ))}
+                    {words
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map((word) => (
+                            <li>
+                                <WordListItem
+                                    wordListItemInfo={word}
+                                    key={word.name}
+                                />
+                            </li>
+                        ))}
                 </ul>
             )}
         </div>
