@@ -1,10 +1,8 @@
-const partOfSpeech = ['adjective', 'noun', 'verb'] as const;
-
 export interface WordDefinition {
     name: string;
-    partOfSpeech: (typeof partOfSpeech)[number];
+    partOfSpeech: string;
     definitions: string[];
-    pronunciations: string[];
+    pronunciations: { ipa: string }[];
 }
 
 export interface WordsState {

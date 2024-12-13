@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { assets } from '../../../assets';
-import { text } from '../../../text/text';
-import '../styles/search-input.scss';
+import '../../styles/search-input.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../redux/store';
-import { changeInputQuery } from '../../../redux/words/wordsSlice';
-import { useDebouncedValue } from '../../../hooks/useDebounce';
+import { AppDispatch, RootState } from '../../../../redux/store';
+import { useDebouncedValue } from '../../../../hooks/useDebounce';
+import { changeInputQuery } from '../../../../redux/words/wordsSlice';
+import { text } from '../../../../text/text';
+import { assets } from '../../../../assets';
 
 const SearchInputField = () => {
     const dispatch = useDispatch<AppDispatch>();

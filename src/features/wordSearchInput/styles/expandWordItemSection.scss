@@ -1,0 +1,39 @@
+$paddingLeftRight: 10px;
+
+.expand-section {
+    position: relative;
+    padding: 0px $paddingLeftRight;
+
+    height: 0px;
+    overflow: hidden;
+
+    transition: height 0.2s ease;
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    ul {
+        counter-reset: listCounter;
+
+        margin: 5px 0px;
+        margin-left: 20px;
+
+        li {
+            counter-increment: listCounter;
+
+            margin-top: 5px;
+
+            &::before {
+                content: counter(listCounter) ')';
+                margin-right: 8px;
+                color: #000;
+            }
+        }
+    }
+}
+.not-available-info {
+    margin-top: 5px;
+    margin-left: 22px;
+    font-size: 1rem;
+}
