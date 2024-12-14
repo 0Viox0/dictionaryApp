@@ -1,12 +1,12 @@
 import { InputSearchWordContainer } from '../components';
-import SearchInputField from '../components/foms/SearchInputField';
 import { StarredWordsContainer } from '../features/wordsDictionary';
+import StarredSearchContainer from '../features/wordsDictionary/components/containers/StarredSearchContainer';
 
 const Starred = () => {
     return (
         <>
             <InputSearchWordContainer
-                leftContainerContent={<SearchInputField />}
+                leftContainerContent={<StarredSearchContainer />}
                 rightContainerContent={<StarredWordsContainer />}
             />
         </>

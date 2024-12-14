@@ -1,0 +1,20 @@
+@use '../../../../styles/colors';
+
+.burger-drag-menu {
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        cursor: grab;
+    }
+
+    > div {
+        width: 30px;
+        height: 2px;
+
+        background-color: darken(colors.$darkGray, 20%);
+        margin: 2px auto;
+
+        border-radius: 10px;
+    }
+}

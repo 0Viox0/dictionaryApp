@@ -3,11 +3,14 @@ import { WordDefinition } from '../../../redux/words/types';
 import '../styles/wordListItem.scss';
 import Star from './Star';
 import ExpandSection from './ExpandSection';
+import BurgerMenu from './icons/BurgerMenu';
 
 const WordListItem = ({
     wordListItemInfo,
+    draggable,
 }: {
     wordListItemInfo: WordDefinition;
+    draggable?: boolean;
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const starRef = useRef<HTMLDivElement>(null);
@@ -24,9 +27,11 @@ const WordListItem = ({
         <div
             className={`word-definition-wrapper ${isExpanded && 'expanded-padding-bottom'}`}
             onClick={handleExpandItem}
+            draggable={draggable}
         >
             <div className="word-definition-card">
                 <div className="word-definition-card__word-info">
+                    {draggable && <BurgerMenu />}
                     <h1 className="word-definition-card__name">
                         {wordListItemInfo.name}
                     </h1>
