@@ -1,0 +1,35 @@
+@use '../../../styles/colors';
+@use '../../../styles/variables';
+@use '../../../styles/shapes';
+
+$starSize: 30px;
+
+%star-base {
+    margin-right: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.blue-star {
+    @include shapes.star(colors.$blue, $starSize);
+    @extend %star-base;
+}
+
+.transparent-star {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @extend %star-base;
+    @include shapes.star(colors.$blue, $starSize);
+
+    &::before {
+        content: '';
+        position: relative;
+        @include shapes.star(colors.$white, calc($starSize - 10px));
+    }
+}

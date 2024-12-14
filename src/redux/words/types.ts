@@ -12,3 +12,16 @@ export interface WordsState {
     pageSize: number;
     words?: WordDefinition[];
 }
+
+export type FetchedWord = {
+    meta: {
+        id: number;
+        'app-shortdef': {
+            fl: string;
+        };
+    };
+    shortdef: string[];
+    hwi: {
+        prs: string[];
+    };
+};

@@ -1,5 +1,16 @@
+import { InputSearchWordContainer } from '../components';
+import SearchInputField from '../components/foms/SearchInputField';
+import { StarredWordsContainer } from '../features/wordsDictionary';
+
 const Starred = () => {
-    return <div>Starred</div>;
+    return (
+        <>
+            <InputSearchWordContainer
+                leftContainerContent={<SearchInputField />}
+                rightContainerContent={<StarredWordsContainer />}
+            />
+        </>
+    );
 };
 
 export default Starred;

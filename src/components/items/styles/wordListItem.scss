@@ -2,8 +2,6 @@
 @use '../../../styles/variables';
 @use '../../../styles/shapes';
 
-$starSize: 30px;
-
 .word-definition-wrapper {
     border-radius: variables.$borderRadius;
 
@@ -39,36 +37,6 @@ $starSize: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    %star-base {
-        margin-right: 20px;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
-    .blue-star {
-        @include shapes.star(colors.$blue, $starSize);
-        @extend %star-base;
-    }
-
-    .transparent-star {
-        position: relative;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @extend %star-base;
-        @include shapes.star(colors.$blue, $starSize);
-
-        &::before {
-            content: '';
-            position: relative;
-            @include shapes.star(colors.$white, calc($starSize - 10px));
-        }
-    }
 }
 
 .word-definition-card__word-info {

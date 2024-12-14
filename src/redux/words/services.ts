@@ -1,18 +1,5 @@
 import { API_KEY, wordsBaseUrl } from '../../constants';
-import { WordDefinition } from './types';
-
-type FetchedWord = {
-    meta: {
-        id: number;
-        'app-shortdef': {
-            fl: string;
-        };
-    };
-    shortdef: string[];
-    hwi: {
-        prs: string[];
-    };
-};
+import { FetchedWord, WordDefinition } from './types';
 
 export const fetchWordsData = async (query: string) => {
     try {

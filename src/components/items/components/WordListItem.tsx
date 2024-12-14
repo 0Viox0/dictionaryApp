@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { WordDefinition } from '../../../redux/words/types';
 import '../styles/wordListItem.scss';
+import Star from './Star';
 import ExpandSection from './ExpandSection';
 
 const WordListItem = ({
@@ -8,13 +9,8 @@ const WordListItem = ({
 }: {
     wordListItemInfo: WordDefinition;
 }) => {
-    const [isStarred, setIsStarred] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const starRef = useRef<HTMLDivElement>(null);
-
-    const handleStarOnClick = () => {
-        setIsStarred((prevState) => !prevState);
-    };
 
     const handleExpandItem = (
         ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -41,11 +37,9 @@ const WordListItem = ({
                         {wordListItemInfo.definitions[0]}
                     </div>
                 </div>
-                <div
-                    className={isStarred ? 'blue-star' : 'transparent-star'}
-                    onClick={handleStarOnClick}
-                    ref={starRef}
-                />
+                <div ref={starRef}>
+                    <Star wordInfo={wordListItemInfo} />
+                </div>
             </div>
             <ExpandSection
                 wordListItemInfo={wordListItemInfo}

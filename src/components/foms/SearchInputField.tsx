@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import '../../styles/search-input.scss';
+import './search-input.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../../redux/store';
-import { useDebouncedValue } from '../../../../hooks/useDebounce';
-import { changeInputQuery } from '../../../../redux/words/wordsSlice';
-import { text } from '../../../../text/text';
-import { assets } from '../../../../assets';
+import { AppDispatch, RootState } from '../../redux/store';
+import { useDebouncedValue } from '../../hooks/useDebounce';
+import { changeInputQuery } from '../../redux/words/wordsSlice';
+import { assets } from '../../assets';
+import { text } from '../../text/text';
 
 const SearchInputField = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -19,6 +19,11 @@ const SearchInputField = () => {
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
+
+    useEffect(() => {
+        setValue('');
+        dispatch(changeInputQuery(''));
+    }, [dispatch]);
 
     useEffect(() => {
         if (debouncedValue !== undefined) {

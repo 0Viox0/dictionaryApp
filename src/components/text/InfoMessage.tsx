@@ -1,4 +1,4 @@
-import '../../styles/infoComponent.scss';
+import './infoComponent.scss';
 
 const InfoMessage = ({ text }: { text: string }) => {
     return (

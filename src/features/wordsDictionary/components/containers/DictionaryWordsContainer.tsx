@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { fetchWordsAsync } from '../../../../redux/words/thunk';
-import WordListItem from '../WordListItem';
 import { text } from '../../../../text/text';
-import InfoMessage from '../text/InfoMessage';
+import WordListItem from '../../../../components/items/components/WordListItem';
+import { InfoMessage } from '../../../../components';
 
 const DictionaryWordsContainer = () => {
     const searchQuerry = useSelector(
@@ -36,16 +36,11 @@ const DictionaryWordsContainer = () => {
                 <InfoMessage text={text.nothingFound} />
             ) : (
                 <ul className="words-container">
-                    {words
-                        .sort((a, b) => a.name.localeCompare(b.name))
-                        .map((word) => (
-                            <li>
-                                <WordListItem
-                                    wordListItemInfo={word}
-                                    key={word.name}
-                                />
-                            </li>
-                        ))}
+                    {[...words].map((word) => (
+                        <li key={word.name}>
+                            <WordListItem wordListItemInfo={word} />
+                        </li>
+                    ))}
                 </ul>
             )}
         </div>

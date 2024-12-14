@@ -1,7 +1,7 @@
 import '../styles/pageStyles/home.scss';
 import { InputSearchWordContainer } from '../components';
-import DictionaryWordsContainer from '../features/wordSearchInput/components/containers/DictionaryWordsContainer';
-import { SearchInputField } from '../features/wordSearchInput';
+import SearchInputField from '../components/foms/SearchInputField';
+import { DictionaryWordsContainer } from '../features/wordsDictionary';
 
 const Home = () => {
     return (
