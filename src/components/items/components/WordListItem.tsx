@@ -40,7 +40,7 @@ const WordListItem = ({
         <div
             className={`word-definition-wrapper 
                         ${isExpanded && 'expanded-padding-bottom'}
-                        ${!draggableProps && 'margin-bottom'}`}
+                        ${!draggableProps ? 'margin-bottom' : 'draggable'}`}
             onClick={handleExpandItem}
             draggable={draggableProps ? true : false}
             onDragStart={handleOnDragStart}
