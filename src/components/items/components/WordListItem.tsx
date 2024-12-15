@@ -4,13 +4,14 @@ import '../styles/wordListItem.scss';
 import Star from './Star';
 import ExpandSection from './ExpandSection';
 import BurgerMenu from './icons/BurgerMenu';
+import { DraggableProps } from '../../../types/general';
 
 const WordListItem = ({
     wordListItemInfo,
-    draggable,
+    draggableProps,
 }: {
     wordListItemInfo: WordDefinition;
-    draggable?: boolean;
+    draggableProps?: DraggableProps;
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const starRef = useRef<HTMLDivElement>(null);
@@ -23,15 +24,31 @@ const WordListItem = ({
         }
     };
 
+    const handleOnDragStart = () => {
+        if (draggableProps) {
+            draggableProps.setActiveCard(wordListItemInfo.name);
+        }
+    };
+
+    const handleOnDragEnd = () => {
+        if (draggableProps) {
+            draggableProps.setActiveCard(wordListItemInfo.name);
+        }
+    };
+
     return (
         <div
-            className={`word-definition-wrapper ${isExpanded && 'expanded-padding-bottom'}`}
+            className={`word-definition-wrapper 
+                        ${isExpanded && 'expanded-padding-bottom'}
+                        ${!draggableProps && 'margin-bottom'}`}
             onClick={handleExpandItem}
-            draggable={draggable}
+            draggable={draggableProps ? true : false}
+            onDragStart={handleOnDragStart}
+            onDragEnd={handleOnDragEnd}
         >
             <div className="word-definition-card">
                 <div className="word-definition-card__word-info">
-                    {draggable && <BurgerMenu />}
+                    {draggableProps && <BurgerMenu />}
                     <h1 className="word-definition-card__name">
                         {wordListItemInfo.name}
                     </h1>

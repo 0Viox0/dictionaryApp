@@ -27,16 +27,14 @@ export const useFilteredWords = (words: WordDefinition[] | undefined) => {
     }, [searchParams]);
 
     const filteredWords = words
-        ? [...words]
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .filter(
-                  (word) =>
-                      word.name.includes(searchQuery) &&
-                      (partOfSpeechFilter.length === 0 ||
-                          partOfSpeechFilter.includes(
-                              word.partOfSpeech as PartOfSpeech,
-                          )),
-              )
+        ? [...words].filter(
+              (word) =>
+                  word.name.includes(searchQuery) &&
+                  (partOfSpeechFilter.length === 0 ||
+                      partOfSpeechFilter.includes(
+                          word.partOfSpeech as PartOfSpeech,
+                      )),
+          )
         : [];
 
     return filteredWords;

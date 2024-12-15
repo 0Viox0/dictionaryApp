@@ -12,4 +12,6 @@ export const text = {
 
     definitionHeading: 'Definitions:',
     pronunciationHeading: 'Pronunciations:',
+
+    placeItem: 'Place item',
 };
