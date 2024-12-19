@@ -27,9 +27,11 @@ export const useFilteredWords = (words: WordDefinition[] | undefined) => {
     }, [searchParams]);
 
     const filteredWords = words
+        // для чего нужно спредить words? 
         ? [...words].filter(
               (word) =>
                   word.name.includes(searchQuery) &&
+                  // просто !partOfSpeechFilter.length + не вижу смысла в этом условии 
                   (partOfSpeechFilter.length === 0 ||
                       partOfSpeechFilter.includes(
                           word.partOfSpeech as PartOfSpeech,

@@ -23,6 +23,8 @@ const PartOfSpeechCheckbox = ({ name }: { name: string }) => {
 
     return (
         <div className="part-of-speech__container">
+            {/* кастомный чекбокс нужно реализовать используя <input type="checkbox" /> */}
+            {/* должна быть возможность отчекать при нажатии на лейбл, а не только на сам чекбокс */}
             <button
                 className={`part-of-speech__checkbox ${isActive && 'active'}`}
                 onClick={handleCheckmarkOnClick}

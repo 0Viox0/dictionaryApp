@@ -15,6 +15,7 @@ $iconSize: 30px;
 
     background-color: colors.$white;
 
+    // используй `&`
     .input__icon {
         width: $iconSize;
         height: $iconSize;

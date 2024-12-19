@@ -6,10 +6,22 @@ import ExpandSection from './ExpandSection';
 import BurgerMenu from './icons/BurgerMenu';
 import { DraggableProps } from '../../../types/general';
 
+
+// type WordListItemProps = {
+//     wordListItemInfo: WordDefinition;
+//     draggableProps?: DraggableProps;
+// }
+
+// const WordListItem: FC<WordListItemProps> = ({
+//     wordListItemInfo,
+//     draggableProps,
+// }) => {
+
 const WordListItem = ({
     wordListItemInfo,
     draggableProps,
 }: {
+    // создавай отдельный тип/интерфейс для пропсов компонента
     wordListItemInfo: WordDefinition;
     draggableProps?: DraggableProps;
 }) => {
@@ -17,8 +29,11 @@ const WordListItem = ({
     const starRef = useRef<HTMLDivElement>(null);
 
     const handleExpandItem = (
+        // импортируй MouseEvent - так будет выглядеть чище
+        // не сокращай event, оставляй читабельный вид
         ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
     ) => {
+        // необходимости в этом не будет
         if (starRef.current && !starRef.current.contains(ev.target as Node)) {
             setIsExpanded((prevState) => !prevState);
         }
@@ -38,6 +53,7 @@ const WordListItem = ({
 
     return (
         <div
+            // задание - написать свою функцию classNames (аналог функции из библиотеки)
             className={`word-definition-wrapper 
                         ${isExpanded && 'expanded-padding-bottom'}
                         ${!draggableProps ? 'margin-bottom' : 'draggable'}`}
@@ -59,6 +75,7 @@ const WordListItem = ({
                         {wordListItemInfo.definitions[0]}
                     </div>
                 </div>
+                {/* необходимости в ref и во вложенности не будет */}
                 <div ref={starRef}>
                     <Star wordInfo={wordListItemInfo} />
                 </div>

@@ -18,6 +18,7 @@ export const fetchWordsData = async (query: string) => {
 
         return wordsArray;
     } catch {
+        // не лучшее решение, нужно обрабатывать ошибки
         return undefined;
     }
 };

@@ -7,6 +7,7 @@ const ExpandSection = ({
     wordListItemInfo,
     isExpanded,
 }: {
+    // создавай отдельный тип/интерфейс для пропсов компонента
     wordListItemInfo: WordDefinition;
     isExpanded: boolean;
 }) => {
@@ -26,7 +27,9 @@ const ExpandSection = ({
             ref={sectionRef}
         >
             <div className="line"></div>
+            {/* на странице тег h1 может быть только один */}
             <h1>{text.definitionHeading}</h1>
+            {/* вместо двух условий можно сделать просто `!wordListItemInfo.definitions?.length` ? ... */}
             {!wordListItemInfo.definitions ||
             wordListItemInfo.definitions.length === 0 ? (
                 <div className="not-available-info">
@@ -39,9 +42,11 @@ const ExpandSection = ({
                     ))}
                 </ul>
             )}
+            {/* на странице тег h1 может быть только один */}
             <h1>{text.pronunciationHeading}</h1>
             {wordListItemInfo.pronunciations ? (
                 <ul>
+                    {/* лучше назвать `pronunciation` - более читабельное и понятное название */}
                     {wordListItemInfo.pronunciations.map((pron, id) => (
                         <li key={id}>{pron.ipa}</li>
                     ))}

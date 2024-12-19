@@ -44,6 +44,7 @@ const StarredWordsContainer = () => {
 
     return (
         <div className="outer-container">
+            {/* просто !filteredWords.length и не сравнивать с 0 */}
             {filteredWords.length === 0 ? (
                 <InfoMessage text={text.nothingFound} />
             ) : (
@@ -54,6 +55,7 @@ const StarredWordsContainer = () => {
                             <li>
                                 <WordListItem
                                     wordListItemInfo={word}
+                                    // не вижу смысла в draggableProps, и в целом в draggable
                                     draggableProps={{
                                         draggable: true,
                                         setActiveCard: setActiveCard,

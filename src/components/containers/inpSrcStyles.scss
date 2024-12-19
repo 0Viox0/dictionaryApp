@@ -5,6 +5,7 @@
     display: flex;
     margin: 40px variables.$leftRightMargin;
 
+    // используй `&`
     .container__inner-left {
         padding: 20px;
         background-color: colors.$darkGray;

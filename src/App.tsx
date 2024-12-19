@@ -8,6 +8,7 @@ import { store } from './redux/store';
 
 function App() {
     return (
+        // Provider и BrowserRouter выносят в main.tsx а в App.tsx оставляют Routes
         <Provider store={store}>
             <BrowserRouter>
                 <Routes>

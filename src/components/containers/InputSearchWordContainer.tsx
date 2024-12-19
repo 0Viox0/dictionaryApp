@@ -1,11 +1,14 @@
-import React from 'react';
+// import React from 'react';
+
+// название файла стилей 
 import './inpSrcStyles.scss';
 
 const InputSearchWordContainer = ({
     leftContainerContent,
     rightContainerContent,
 }: {
-    leftContainerContent: React.ReactNode;
+    // создавай отдельный тип/интерфейс для пропсов компонента
+    leftContainerContent: React.ReactNode; // лучше импортировать ReactNode и сократить запись до `leftContainerContent: ReactNode;`
     rightContainerContent: React.ReactNode;
 }) => {
     return (

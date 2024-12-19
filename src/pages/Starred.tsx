@@ -4,6 +4,7 @@ import StarredSearchContainer from '../features/wordsDictionary/components/conta
 
 const Starred = () => {
     return (
+        // для чего нужен реакт фрагмент? 
         <>
             <InputSearchWordContainer
                 leftContainerContent={<StarredSearchContainer />}

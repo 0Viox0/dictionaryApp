@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+// импорт стилей должен быть ниже всех и отделен пустой строкой от остальных импортов 
 import './search-input.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/store';
@@ -8,7 +9,9 @@ import { assets } from '../../assets';
 import { text } from '../../text/text';
 
 const SearchInputField = () => {
+    // можно создать отдельные useAppDispatch и useAppSelector который будет включать в себе типизацию
     const dispatch = useDispatch<AppDispatch>();
+    // селекторы лучше создавать отдельно через createSelector
     const currentSearchQuery = useSelector(
         (state: RootState) => state.words.currentWordSearchQuery,
     );
@@ -34,12 +37,14 @@ const SearchInputField = () => {
     return (
         <div className="input">
             <input
+                // input__form не совсем подходит 
                 className="input__form"
                 type="text"
                 placeholder={text.inputSearchPlaceholder}
                 value={value}
                 onChange={handleOnChange}
             />
+            {/* иконки лучше вставлять как реакт компоненты */}
             <img
                 className="input__icon"
                 src={assets.searchIcon}
