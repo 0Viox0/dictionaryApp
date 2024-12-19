@@ -1,9 +1,9 @@
-import { API_KEY, wordsBaseUrl } from '../../constants';
+import { API_KEY, BASE_URL } from '../../shared/constants';
 import { FetchedWord, WordDefinition } from './types';
 
 export const fetchWordsData = async (query: string) => {
     try {
-        const result = await fetch(`${wordsBaseUrl}${query}?key=${API_KEY}`);
+        const result = await fetch(`${BASE_URL}${query}?key=${API_KEY}`);
 
         const json = await result.json();
 

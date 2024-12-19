@@ -1,15 +1,11 @@
-import '../styles/pageStyles/home.scss';
-import { InputSearchWordContainer } from '../components';
-import SearchInputField from '../components/foms/SearchInputField';
+import { InputField, InputSearchWordContainer } from '../components';
 import { DictionaryWordsContainer } from '../features/wordsDictionary';
 
-const Home = () => {
+export const Home = () => {
     return (
         <InputSearchWordContainer
-            leftContainerContent={<SearchInputField />}
+            leftContainerContent={<InputField />}
             rightContainerContent={<DictionaryWordsContainer />}
         />
     );
 };
-
-export default Home;

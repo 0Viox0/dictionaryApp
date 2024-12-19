@@ -1,8 +1,0 @@
-@use '../../../styles/colors';
-@use '../../../styles/shapes';
-
-$size: 30px;
-
-.star {
-    @include shapes.star(colors.$white, $size);
-}

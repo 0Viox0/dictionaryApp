@@ -1,0 +1,81 @@
+@use '../../styles/variables';
+@use '../../styles/shapes';
+
+.word-definition-wrapper {
+    border-radius: variables.$borderRadius;
+
+    background-color: variables.$white;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.expanded-padding-bottom {
+        padding-bottom: 10px;
+    }
+
+    &.draggable:active {
+        opacity: 0.6;
+    }
+
+    &.margin-bottom {
+        margin-bottom: 15px;
+    }
+}
+
+.line {
+    content: '';
+
+    position: relative;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 97%;
+    height: 2px;
+
+    margin-bottom: 10px;
+
+    background-color: variables.$darkGray;
+}
+
+.word-definition-card {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.word-definition-card__word-info {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    width: 100%;
+
+    * {
+        margin: 0 12px;
+    }
+
+    .word-definition-card__name {
+        text-wrap: nowrap;
+        flex-shrink: 0;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .word-definition-card__part-of-speech {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .word-definition-card__definition {
+        font-size: 1.1rem;
+
+        max-width: 60ch;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+}

@@ -1,0 +1,16 @@
+@use '../../styles/variables';
+
+.container {
+    display: flex;
+    margin: 40px variables.$leftRightMargin;
+
+    // используй `&`
+    .container__inner-left {
+        padding: 20px;
+        background-color: variables.$darkGray;
+    }
+
+    .container__inner-right {
+        width: 100%;
+    }
+}

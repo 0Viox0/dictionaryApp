@@ -1,0 +1,33 @@
+@use '../../styles/variables';
+@use '../../styles/shapes';
+
+.header {
+    background-color: variables.$blue;
+    width: auto;
+    height: 70px;
+
+    margin: variables.$leftRightMargin;
+    padding: 0 40px;
+    border-radius: variables.$borderRadius;
+
+    color: variables.$white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // используй `&`
+    .header__page-name {
+        font-size: 1.8rem;
+    }
+
+    .header__stared-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        *:first-child {
+            margin-right: 10px;
+        }
+    }
+}

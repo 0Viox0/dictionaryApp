@@ -1,5 +1,6 @@
-// исправить экспорты
-export { default as Layout } from './layout/Layout';
-export { default as InputSearchWordContainer } from './containers/InputSearchWordContainer';
-export { default as WordListItem } from './items/components/WordListItem';
-export { default as InfoMessage } from './text/InfoMessage';
+export { InputSearchWordContainer } from './InputSearchWordContainer/InputSearchWordContainer.tsx';
+export { InputField } from './InputField/InputField.tsx';
+export { Header } from './Header/Header.tsx';
+export { Layout } from './Layout/Layout.tsx';
+export { InfoMessage } from './InfoMessage/InfoMessage.tsx';
+export { WordListItem } from './WordListItem/WordListItem.tsx';

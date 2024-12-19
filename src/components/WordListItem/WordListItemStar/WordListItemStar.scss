@@ -1,0 +1,10 @@
+@use '../../../styles/variables';
+@use '../../../styles/shapes';
+
+.star-container {
+    margin-right: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
