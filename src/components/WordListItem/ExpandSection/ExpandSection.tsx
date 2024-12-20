@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC, MouseEvent, useEffect, useRef } from 'react';
 import { WordDefinition } from '../../../redux/words/types';
 import { text } from '../../../shared/text';
 
@@ -27,6 +27,9 @@ export const ExpandSection: FC<ExpandSectionProps> = ({
         <div
             className={`expand-section ${!isExpanded && 'hidden'} `}
             ref={sectionRef}
+            onClick={(event: MouseEvent<HTMLDivElement>) =>
+                event.stopPropagation()
+            }
         >
             <div className="line"></div>
             {/* на странице тег h1 может быть только один */}

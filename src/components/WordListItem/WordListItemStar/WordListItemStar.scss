@@ -1,8 +1,8 @@
-@use '../../../styles/variables';
-@use '../../../styles/shapes';
+@use '../../../shared/styles/variables';
+@use '../../../shared/styles/shapes';
 
 .star-container {
-    margin-right: 20px;
+    padding-right: 20px;
 
     &:hover {
         cursor: pointer;

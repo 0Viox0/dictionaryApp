@@ -1,5 +1,5 @@
-@use '../../styles/variables';
-@use '../../styles/shapes';
+@use '../../shared/styles/variables';
+@use '../../shared/styles/shapes';
 
 .word-definition-wrapper {
     border-radius: variables.$borderRadius;
@@ -44,32 +44,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
 
-.word-definition-card__word-info {
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    &__word-info {
+        display: flex;
+        justify-content: start;
+        align-items: center;
 
-    width: 100%;
+        width: 100%;
 
-    * {
-        margin: 0 12px;
+        * {
+            margin: 0 12px;
+        }
     }
 
-    .word-definition-card__name {
+    &__name {
         text-wrap: nowrap;
         flex-shrink: 0;
         font-size: 1.3rem;
         font-weight: 500;
     }
 
-    .word-definition-card__part-of-speech {
+    &__part-of-speech {
         font-size: 1rem;
         font-style: italic;
     }
 
-    .word-definition-card__definition {
+    &__definition {
         font-size: 1.1rem;
 
         max-width: 60ch;

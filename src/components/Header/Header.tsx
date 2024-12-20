@@ -17,7 +17,7 @@ export const Header = () => {
                     fillColor="white"
                     strokeColor="white"
                 />
-                <h1 className="header__page-name">{text.starredPageName}</h1>
+                <h3 className="header__page-name">{text.starredPageName}</h3>
             </Link>
         </header>
     );

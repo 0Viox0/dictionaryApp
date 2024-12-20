@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, MouseEvent, useEffect, useState } from 'react';
 import { WordDefinition } from '../../../redux/words/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
@@ -22,9 +22,8 @@ export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     );
     const dispatch = useDispatch();
 
-    const handleStarOnClick = () => {
-        // нужно добавить `event.stopPropagation()` чтобы остановить всплытие
-        // (в этом случае не сработает клик для раскрытия списка)
+    const handleStarOnClick = (event: MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
 
         if (isStarred) {
             // можно объединить в один редьюсер

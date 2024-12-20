@@ -1,11 +1,11 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { WordDefinition } from '../../redux/words/types';
 import { DraggableProps } from '../../shared/types';
 import { BurgerMenuIcon } from '../../shared/assets/icons/BurgerMenuIcon';
-
-import './WordListItem.scss';
 import { WordListItemStar } from './WordListItemStar/WordListItemStar';
 import { ExpandSection } from './ExpandSection/ExpandSection';
+
+import './WordListItem.scss';
 
 type WordListItemProps = {
     wordListItemInfo: WordDefinition;
@@ -14,20 +14,13 @@ type WordListItemProps = {
 
 export const WordListItem: FC<WordListItemProps> = ({
     wordListItemInfo,
+    // no point in draggable props
     draggableProps,
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const starRef = useRef<HTMLDivElement>(null);
 
-    const handleExpandItem = (
-        // импортируй MouseEvent - так будет выглядеть чище
-        // не сокращай event, оставляй читабельный вид
-        ev: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    ) => {
-        // необходимости в этом не будет
-        if (starRef.current && !starRef.current.contains(ev.target as Node)) {
-            setIsExpanded((prevState) => !prevState);
-        }
+    const handleExpandItem = () => {
+        setIsExpanded((prevState) => !prevState);
     };
 
     const handleOnDragStart = () => {
@@ -58,9 +51,9 @@ export const WordListItem: FC<WordListItemProps> = ({
                     {draggableProps && (
                         <BurgerMenuIcon width={30} height={30} />
                     )}
-                    <h1 className="word-definition-card__name">
+                    <h3 className="word-definition-card__name">
                         {wordListItemInfo.name}
-                    </h1>
+                    </h3>
                     <span className="word-definition-card__part-of-speech">
                         {wordListItemInfo.partOfSpeech}
                     </span>
@@ -68,10 +61,7 @@ export const WordListItem: FC<WordListItemProps> = ({
                         {wordListItemInfo.definitions[0]}
                     </div>
                 </div>
-                {/* необходимости в ref и во вложенности не будет */}
-                <div ref={starRef}>
-                    <WordListItemStar wordInfo={wordListItemInfo} />
-                </div>
+                <WordListItemStar wordInfo={wordListItemInfo} />
             </div>
             <ExpandSection
                 wordListItemInfo={wordListItemInfo}
