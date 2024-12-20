@@ -23,12 +23,14 @@ export const PartOfSpeechCheckbox = ({ name }: { name: string }) => {
     }, [isActive, name, searchParams, setSearchParams]);
 
     return (
-        <div className="part-of-speech__container">
+        <div
+            className="part-of-speech__container"
+            onClick={handleCheckmarkOnClick}
+        >
             {/* кастомный чекбокс нужно реализовать используя <input type="checkbox" /> */}
             {/* должна быть возможность отчекать при нажатии на лейбл, а не только на сам чекбокс */}
             <button
                 className={`part-of-speech__checkbox ${isActive && 'active'}`}
-                onClick={handleCheckmarkOnClick}
             />
             <div className="part-of-speech__name">
                 {formatPartOfSpeech(name)}

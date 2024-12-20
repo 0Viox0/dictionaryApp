@@ -1,12 +1,10 @@
 import { FC, MouseEvent, useEffect, useState } from 'react';
 import { WordDefinition } from '../../../redux/words/types';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
-import {
-    removeWordFromLocalStorage,
-    saveWordToLocalStorage,
-} from '../../../redux/starredWords/starredWordsSlice';
+import { toggleWordInLocalStorage } from '../../../redux/starredWords/starredWordsSlice';
 import { StarIcon } from '../../../shared/assets/icons/StarIcon';
+import { useAppDispatch } from '../../../shared/hooks/useAppDispatch';
+import { useAppSelector } from '../../../shared/hooks/useAppSelector';
+import { selectStarredWords } from '../../../redux/starredWords/selectors';
 
 import './WordListItemStar.scss';
 
@@ -16,21 +14,12 @@ type WordListItemStarProps = {
 
 export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     const [isStarred, setIsStarred] = useState(false);
-    // вынеси в селектор созданный через createSelector
-    const starredWords = useSelector(
-        (state: RootState) => state.savedWords.words,
-    );
-    const dispatch = useDispatch();
+    const starredWords = useAppSelector(selectStarredWords);
+    const dispatch = useAppDispatch();
 
-    const handleStarOnClick = (event: MouseEvent<HTMLDivElement>) => {
+    const handleStarOnClick = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-
-        if (isStarred) {
-            // можно объединить в один редьюсер
-            dispatch(removeWordFromLocalStorage(wordInfo));
-        } else {
-            dispatch(saveWordToLocalStorage(wordInfo));
-        }
+        dispatch(toggleWordInLocalStorage(wordInfo));
     };
 
     useEffect(() => {
@@ -42,14 +31,13 @@ export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     }, [starredWords, wordInfo.name]);
 
     return (
-        // это должна быть кнопка
-        <div className="star-container" onClick={handleStarOnClick}>
+        <button className="star-container" onClick={handleStarOnClick}>
             <StarIcon
                 width={35}
                 height={35}
                 strokeColor="#81bef5"
                 fillColor={isStarred ? '#81bef5' : 'none'}
             />
-        </div>
+        </button>
     );
 };

@@ -5,6 +5,7 @@ import { fetchWordsAsync } from './thunk';
 const initialState: WordsState = {
     currentWordSearchQuery: '',
     isLoading: false,
+    isError: false,
     pageSize: 10,
     currentIndex: 0,
     words: undefined,

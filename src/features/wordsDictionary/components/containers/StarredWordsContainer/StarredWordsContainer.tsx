@@ -1,19 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../../../redux/store';
 import { useFilteredWords } from '../../../hooks/useFilteredWords';
 import { Fragment, useState } from 'react';
 import { changeWordsInLocalStorage } from '../../../../../redux/starredWords/starredWordsSlice';
 import { InfoMessage, WordListItem } from '../../../../../components';
 import { text } from '../../../../../shared/text';
+import { DropArea } from '../../DropArea/DropArea';
+import { useAppDispatch } from '../../../../../shared/hooks/useAppDispatch';
+import { useAppSelector } from '../../../../../shared/hooks/useAppSelector';
 
 import './StarredWordsContainer.scss';
-import { DropArea } from '../../DropArea/DropArea';
 
 export const StarredWordsContainer = () => {
-    const words = useSelector((state: RootState) => state.savedWords.words);
+    const words = useAppSelector((state) => state.savedWords.words);
     const filteredWords = useFilteredWords(words);
     const [activeCard, setActiveCard] = useState<string | null>(null);
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
 
     const onDrop = (name: string | null) => {
         if (activeCard === name) return;
@@ -44,8 +44,7 @@ export const StarredWordsContainer = () => {
 
     return (
         <div className="outer-container">
-            {/* просто !filteredWords.length и не сравнивать с 0 */}
-            {filteredWords.length === 0 ? (
+            {!filteredWords.length ? (
                 <InfoMessage text={text.nothingFound} />
             ) : (
                 <ul className="words-container">
@@ -55,11 +54,7 @@ export const StarredWordsContainer = () => {
                             <li>
                                 <WordListItem
                                     wordListItemInfo={word}
-                                    // не вижу смысла в draggableProps, и в целом в draggable
-                                    draggableProps={{
-                                        draggable: true,
-                                        setActiveCard: setActiveCard,
-                                    }}
+                                    setActiveCard={setActiveCard}
                                 />
                             </li>
                             <DropArea onDrop={() => onDrop(word.name)} />

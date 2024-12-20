@@ -1,10 +1,10 @@
-type ClassNamesArgs =
+export type ClassNamesArgs =
     | string
     | null
     | undefined
     | number
     | boolean
-    | Record<string, boolean | null>
+    | Record<string, boolean | null | undefined>
     | ClassNamesArgs[];
 
 export const classNames = (...args: ClassNamesArgs[]) => {

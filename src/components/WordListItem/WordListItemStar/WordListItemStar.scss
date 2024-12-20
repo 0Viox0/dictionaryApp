@@ -4,6 +4,10 @@
 .star-container {
     padding-right: 20px;
 
+    outline: none;
+    border: none;
+    background: transparent;
+
     &:hover {
         cursor: pointer;
     }

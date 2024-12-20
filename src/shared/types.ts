@@ -1,6 +1,7 @@
+import { Dispatch } from 'react';
+
 export type DraggableProps = {
-    draggable: boolean;
-    setActiveCard: React.Dispatch<React.SetStateAction<string | null>>;
+    setActiveCard: Dispatch<React.SetStateAction<string | null>>;
 };
 
 export type IconProps = {

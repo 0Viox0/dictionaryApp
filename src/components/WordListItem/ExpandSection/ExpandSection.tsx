@@ -32,11 +32,8 @@ export const ExpandSection: FC<ExpandSectionProps> = ({
             }
         >
             <div className="line"></div>
-            {/* на странице тег h1 может быть только один */}
-            <h1>{text.definitionHeading}</h1>
-            {/* вместо двух условий можно сделать просто `!wordListItemInfo.definitions?.length` ? ... */}
-            {!wordListItemInfo.definitions ||
-            wordListItemInfo.definitions.length === 0 ? (
+            <h3>{text.definitionHeading}</h3>
+            {!wordListItemInfo.definitions?.length ? (
                 <div className="not-available-info">
                     {text.informationNotAvail}
                 </div>
@@ -47,14 +44,14 @@ export const ExpandSection: FC<ExpandSectionProps> = ({
                     ))}
                 </ul>
             )}
-            {/* на странице тег h1 может быть только один */}
-            <h1>{text.pronunciationHeading}</h1>
+            <h3>{text.pronunciationHeading}</h3>
             {wordListItemInfo.pronunciations ? (
                 <ul>
-                    {/* лучше назвать `pronunciation` - более читабельное и понятное название */}
-                    {wordListItemInfo.pronunciations.map((pron, id) => (
-                        <li key={id}>{pron.ipa}</li>
-                    ))}
+                    {wordListItemInfo.pronunciations.map(
+                        (pronunciation, id) => (
+                            <li key={id}>{pronunciation.ipa}</li>
+                        ),
+                    )}
                 </ul>
             ) : (
                 <div className="not-available-info">

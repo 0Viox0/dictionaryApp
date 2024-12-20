@@ -25,13 +25,14 @@ $paddingLeftRight: 10px;
             margin-top: 5px;
 
             &::before {
-                content: counter(listCounter) ')';
+                content: counter(listCounter);
                 margin-right: 8px;
                 color: #000;
             }
         }
     }
 }
+
 .not-available-info {
     margin-top: 5px;
     margin-left: 22px;

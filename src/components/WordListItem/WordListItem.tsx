@@ -1,56 +1,62 @@
-import { FC, useState } from 'react';
+import { Dispatch, FC, useEffect, useState } from 'react';
 import { WordDefinition } from '../../redux/words/types';
-import { DraggableProps } from '../../shared/types';
 import { BurgerMenuIcon } from '../../shared/assets/icons/BurgerMenuIcon';
 import { WordListItemStar } from './WordListItemStar/WordListItemStar';
 import { ExpandSection } from './ExpandSection/ExpandSection';
+import { classNames, ClassNamesArgs } from '../../shared/utils/classNames';
 
 import './WordListItem.scss';
 
 type WordListItemProps = {
     wordListItemInfo: WordDefinition;
-    draggableProps?: DraggableProps;
+    setActiveCard?: Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const WordListItem: FC<WordListItemProps> = ({
     wordListItemInfo,
-    // no point in draggable props
-    draggableProps,
+    setActiveCard,
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isDraggable, setIsDraggable] = useState(false);
+
+    useEffect(() => {
+        setIsDraggable(setActiveCard ? true : false);
+    }, [setActiveCard]);
 
     const handleExpandItem = () => {
         setIsExpanded((prevState) => !prevState);
     };
 
     const handleOnDragStart = () => {
-        if (draggableProps) {
-            draggableProps.setActiveCard(wordListItemInfo.name);
+        if (isDraggable) {
+            setActiveCard!(wordListItemInfo.name);
         }
     };
 
     const handleOnDragEnd = () => {
-        if (draggableProps) {
-            draggableProps.setActiveCard(wordListItemInfo.name);
+        if (isDraggable) {
+            setActiveCard!(wordListItemInfo.name);
         }
     };
 
+    const wordListItemClass = classNames({
+        'word-definition-wrapper': true,
+        'expanded-padding-bottom': isExpanded,
+        'margin-bottom': !isDraggable,
+        draggable: isDraggable,
+    } as ClassNamesArgs);
+
     return (
         <div
-            // задание - написать свою функцию classNames (аналог функции из библиотеки)
-            className={`word-definition-wrapper 
-                        ${isExpanded && 'expanded-padding-bottom'}
-                        ${!draggableProps ? 'margin-bottom' : 'draggable'}`}
+            className={wordListItemClass}
             onClick={handleExpandItem}
-            draggable={draggableProps ? true : false}
+            draggable={isDraggable}
             onDragStart={handleOnDragStart}
             onDragEnd={handleOnDragEnd}
         >
             <div className="word-definition-card">
                 <div className="word-definition-card__word-info">
-                    {draggableProps && (
-                        <BurgerMenuIcon width={30} height={30} />
-                    )}
+                    {isDraggable && <BurgerMenuIcon width={30} height={30} />}
                     <h3 className="word-definition-card__name">
                         {wordListItemInfo.name}
                     </h3>

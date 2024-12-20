@@ -9,6 +9,10 @@ $squareSize: 25px;
 
     margin: 15px 10px;
 
+    &:hover {
+        cursor: pointer;
+    }
+
     .part-of-speech__name {
         font-size: 1.1rem;
     }

@@ -1,14 +1,14 @@
 import { WordDefinition } from '../words/types';
-import { wordsKey } from './constants';
+import { LOCAL_STORAGE_KEY } from './constants';
 
 export const loadWordsFromLocalStorage = () => {
-    const itemsString = localStorage.getItem(wordsKey);
+    const itemsString = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     if (!itemsString) {
         return [];
     }
 
-    // зачем два раза типизировать WordDefinition[] ? 
+    // зачем два раза типизировать WordDefinition[] ?
     const wordsFromLocalStorage: WordDefinition[] = JSON.parse(
         itemsString,
     ) as WordDefinition[];

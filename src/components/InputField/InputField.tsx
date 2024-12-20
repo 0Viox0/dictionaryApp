@@ -1,20 +1,17 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../redux/store';
 import { changeInputQuery } from '../../redux/words/wordsSlice';
 import { text } from '../../shared/text';
 import { SearchIcon } from '../../shared/assets/icons/SearchIcon';
 import { useDebouncedValue } from '../../shared/hooks/useDebounce';
+import { useAppDispatch } from '../../shared/hooks/useAppDispatch';
+import { useAppSelector } from '../../shared/hooks/useAppSelector';
+import { selectCurrentSearchQuery } from '../../redux/words/selectors';
 
 import './InputField.scss';
 
 export const InputField = () => {
-    // можно создать отдельные useAppDispatch и useAppSelector который будет включать в себе типизацию
-    const dispatch = useDispatch<AppDispatch>();
-    // селекторы лучше создавать отдельно через createSelector
-    const currentSearchQuery = useSelector(
-        (state: RootState) => state.words.currentWordSearchQuery,
-    );
+    const dispatch = useAppDispatch();
+    const currentSearchQuery = useAppSelector(selectCurrentSearchQuery);
 
     const [value, setValue] = useState(currentSearchQuery);
     const debouncedValue = useDebouncedValue(value, 300);

@@ -8,6 +8,7 @@ export interface WordDefinition {
 export interface WordsState {
     currentWordSearchQuery: string;
     isLoading: boolean;
+    isError: boolean;
     currentIndex: number;
     pageSize: number;
     words?: WordDefinition[];
