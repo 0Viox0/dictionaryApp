@@ -14,7 +14,7 @@ export const useInfoMessageWithWords = () => {
     const dispatch = useAppDispatch();
     const [isSearchQueryEmpty, setIsSearchQueryEmpty] = useState(true);
 
-    const [displayInfoMessage, setDisplayInfoMessage] = useState(false);
+    const [displayInfoMessage, setDisplayInfoMessage] = useState(true);
     const [infoMessageText, setInfoMessageText] = useState('');
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export const useInfoMessageWithWords = () => {
             setInfoMessageText(text.searchQueryEmpty);
         } else if (isLoading) {
             setInfoMessageText(text.loadingMessage);
-        } else if (isError || !words?.length) {
+        } else if (isError && !words?.length) {
             setInfoMessageText(text.nothingFound);
         } else {
             setDisplayInfoMessage(false);

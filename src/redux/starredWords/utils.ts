@@ -8,10 +8,7 @@ export const loadWordsFromLocalStorage = () => {
         return [];
     }
 
-    // зачем два раза типизировать WordDefinition[] ?
-    const wordsFromLocalStorage: WordDefinition[] = JSON.parse(
-        itemsString,
-    ) as WordDefinition[];
+    const wordsFromLocalStorage: WordDefinition[] = JSON.parse(itemsString);
 
     return wordsFromLocalStorage;
 };

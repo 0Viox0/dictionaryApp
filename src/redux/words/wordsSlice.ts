@@ -20,13 +20,16 @@ const wordSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        // не хватает обработки ошибок `fetchWordsAsync.rejected`
         builder.addCase(fetchWordsAsync.pending, (state) => {
             state.isLoading = true;
         });
         builder.addCase(fetchWordsAsync.fulfilled, (state, action) => {
             state.isLoading = false;
             state.words = action.payload;
+        });
+        builder.addCase(fetchWordsAsync.rejected, (state) => {
+            state.isLoading = false;
+            state.isError = true;
         });
     },
 });

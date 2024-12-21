@@ -28,7 +28,6 @@ export const DropArea = ({ onDrop }: { onDrop: () => void }) => {
             onDrop={handleOnDrop}
         >
             <div className={'drop-area'}>
-                {/* нет необходимости в такой вложенности */}
                 <div>{text.placeItem}</div>
             </div>
         </div>

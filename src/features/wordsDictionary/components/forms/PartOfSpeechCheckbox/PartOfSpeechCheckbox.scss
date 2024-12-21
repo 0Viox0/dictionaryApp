@@ -2,6 +2,12 @@
 
 $squareSize: 25px;
 
+@mixin checkboxAnimation($scale) {
+    transform: scale($scale);
+    transition: transform 0.1s ease;
+    transform-origin: center;
+}
+
 .part-of-speech__container {
     display: flex;
     justify-content: start;
@@ -13,11 +19,17 @@ $squareSize: 25px;
         cursor: pointer;
     }
 
-    .part-of-speech__name {
+    label {
         font-size: 1.1rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
-    .part-of-speech__checkbox {
+    input[type='checkbox'] {
+        appearance: none;
+
         width: $squareSize;
         height: $squareSize;
 
@@ -28,26 +40,31 @@ $squareSize: 25px;
         border: none;
         border-radius: 5px;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+        place-items: center;
 
         &:hover {
             cursor: pointer;
         }
 
-        &.active::after {
+        &::after {
             $decreaseSize: 9px;
 
             position: relative;
             content: '';
 
-            width: calc($squareSize - $decreaseSize);
-            height: calc($squareSize - $decreaseSize);
-
             background-color: variables.$black;
 
             border-radius: 3px;
+
+            @include checkboxAnimation(0);
+
+            width: calc($squareSize - $decreaseSize);
+            height: calc($squareSize - $decreaseSize);
+        }
+
+        &.active::after {
+            @include checkboxAnimation(1);
         }
     }
 }

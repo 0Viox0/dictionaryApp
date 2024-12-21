@@ -3,9 +3,13 @@ import { FetchedWord, WordDefinition } from './types';
 
 export const fetchWordsData = async (query: string) => {
     try {
-        const result = await fetch(`${BASE_URL}${query}?key=${API_KEY}`);
+        const response = await fetch(`${BASE_URL}${query}?key=${API_KEY}`);
 
-        const json = await result.json();
+        if (!response.ok) {
+            throw new Error(`failed to fetch data from ${BASE_URL}`);
+        }
+
+        const json = await response.json();
 
         const wordsArray: WordDefinition[] = json.map(
             (fetchedWord: FetchedWord) => ({
@@ -17,8 +21,13 @@ export const fetchWordsData = async (query: string) => {
         );
 
         return wordsArray;
-    } catch {
-        // не лучшее решение, нужно обрабатывать ошибки
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.log(error.message, error);
+        } else {
+            console.log('An unknown error has occured', error);
+        }
+
         return undefined;
     }
 };
