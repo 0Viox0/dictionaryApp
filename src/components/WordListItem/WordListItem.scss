@@ -45,8 +45,8 @@
     align-items: center;
 
     &__word-info {
-        display: flex;
-        justify-content: start;
+        display: grid;
+        grid-template-columns: auto auto auto 1fr auto;
         align-items: center;
 
         width: 100%;
@@ -70,11 +70,12 @@
 
     &__definition {
         font-size: 1.1rem;
-
-        max-width: 60ch;
-
         overflow: hidden;
         text-overflow: ellipsis;
         text-wrap: nowrap;
+    }
+
+    .burgerMenu {
+        flex-shrink: 0;
     }
 }

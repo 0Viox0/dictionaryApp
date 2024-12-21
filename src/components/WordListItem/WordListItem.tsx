@@ -56,7 +56,13 @@ export const WordListItem: FC<WordListItemProps> = ({
         >
             <div className="word-definition-card">
                 <div className="word-definition-card__word-info">
-                    {isDraggable && <BurgerMenuIcon width={30} height={30} />}
+                    {isDraggable && (
+                        <BurgerMenuIcon
+                            width={30}
+                            height={30}
+                            className="burgerMenu"
+                        />
+                    )}
                     <h3 className="word-definition-card__name">
                         {wordListItemInfo.name}
                     </h3>
