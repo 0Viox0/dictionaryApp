@@ -1,3 +1,4 @@
+// не нужно указывать расширение файла `.tsx`
 export { InputSearchWordContainer } from './InputSearchWordContainer/InputSearchWordContainer.tsx';
 export { InputField } from './InputField/InputField.tsx';
 export { Header } from './Header/Header.tsx';

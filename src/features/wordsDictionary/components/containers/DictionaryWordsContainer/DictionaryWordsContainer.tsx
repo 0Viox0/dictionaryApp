@@ -1,3 +1,5 @@
+// чтобы не было такой глубокой вложенности, нужно использовать абсолютные импорты 
+// для этого нужно настроить tsconfig и сборщик
 import { InfoMessage, WordListItem } from '../../../../../components';
 import { useInfoMessageWithWords } from '../../../hooks/useInfoMessageWithWords';
 
@@ -13,6 +15,7 @@ export const DictionaryWordsContainer = () => {
                 <InfoMessage text={infoMessageText} />
             ) : (
                 <ul className="words-container">
+                    {/* неправильная логика обработки ошибок */}
                     {...words!.map((word) => (
                         <li key={word.name}>
                             <WordListItem wordListItemInfo={word} />

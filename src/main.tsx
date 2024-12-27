@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+// не нужно указывать расширение файла
 import { store } from './redux/store.ts';
 import { App } from './App.tsx';
 

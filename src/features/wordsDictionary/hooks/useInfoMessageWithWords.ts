@@ -32,6 +32,7 @@ export const useInfoMessageWithWords = () => {
             setInfoMessageText(text.searchQueryEmpty);
         } else if (isLoading) {
             setInfoMessageText(text.loadingMessage);
+        // неправильное условие
         } else if (isError && !words?.length) {
             setInfoMessageText(text.nothingFound);
         } else {

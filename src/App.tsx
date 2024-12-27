@@ -3,6 +3,9 @@ import { Layout } from './components';
 import { Home } from './pages/Home';
 import { Starred } from './pages/Starred';
 
+// добавь index.ts с экспортом в папке pages
+// import { Home, Starred } from './pages';
+
 import './shared/styles/index.scss';
 
 export function App() {

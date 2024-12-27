@@ -29,12 +29,16 @@ export const WordListItem: FC<WordListItemProps> = ({
 
     const handleOnDragStart = () => {
         if (isDraggable) {
+            // оператор `!` стоит использовать как можно реже, так как могут быть баги
+            // лучше добавить в условии проверку на наличие setActiveCard
             setActiveCard!(wordListItemInfo.name);
         }
     };
 
     const handleOnDragEnd = () => {
         if (isDraggable) {
+            // оператор `!` стоит использовать как можно реже, так как могут быть баги
+            // лучше добавить в условии проверку на наличие setActiveCard
             setActiveCard!(wordListItemInfo.name);
         }
     };
@@ -44,6 +48,7 @@ export const WordListItem: FC<WordListItemProps> = ({
         'expanded-padding-bottom': isExpanded,
         'margin-bottom': !isDraggable,
         draggable: isDraggable,
+        // нет необходимости в `as ClassNamesArgs`, лучше убрать
     } as ClassNamesArgs);
 
     return (

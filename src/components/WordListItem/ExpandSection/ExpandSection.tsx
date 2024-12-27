@@ -25,6 +25,7 @@ export const ExpandSection: FC<ExpandSectionProps> = ({
 
     return (
         <div
+            // используй функцию classNames
             className={`expand-section ${!isExpanded && 'hidden'} `}
             ref={sectionRef}
             onClick={(event: MouseEvent<HTMLDivElement>) =>

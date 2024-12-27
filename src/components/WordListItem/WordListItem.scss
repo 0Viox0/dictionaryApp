@@ -22,6 +22,7 @@
     }
 }
 
+// line относится к компоненту ExpandSection, поэтому лучше перенести туда
 .line {
     content: '';
 
@@ -38,6 +39,7 @@
     background-color: variables.$darkGray;
 }
 
+// лучше вложить в .word-definition-wrapper
 .word-definition-card {
     height: 50px;
     display: flex;

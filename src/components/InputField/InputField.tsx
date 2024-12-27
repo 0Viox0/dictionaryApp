@@ -5,6 +5,8 @@ import { SearchIcon } from '../../shared/assets/icons/SearchIcon';
 import { useDebouncedValue } from '../../shared/hooks/useDebounce';
 import { useAppDispatch } from '../../shared/hooks/useAppDispatch';
 import { useAppSelector } from '../../shared/hooks/useAppSelector';
+// import { useAppDispatch, useAppSelector, useDebouncedValue } from 'shared/hooks';
+
 import { selectCurrentSearchQuery } from '../../redux/words/selectors';
 
 import './InputField.scss';
@@ -16,6 +18,7 @@ export const InputField = () => {
     const [value, setValue] = useState(currentSearchQuery);
     const debouncedValue = useDebouncedValue(value, 300);
 
+    // просто handleChange
     const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };

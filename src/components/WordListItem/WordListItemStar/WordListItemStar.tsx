@@ -17,6 +17,7 @@ export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     const starredWords = useAppSelector(selectStarredWords);
     const dispatch = useAppDispatch();
 
+    // handleStarClick
     const handleStarOnClick = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         dispatch(toggleWordInLocalStorage(wordInfo));
