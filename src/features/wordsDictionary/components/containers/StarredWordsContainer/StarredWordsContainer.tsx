@@ -1,11 +1,10 @@
-import { useFilteredWords } from '../../../hooks/useFilteredWords';
 import { Fragment, useState } from 'react';
-import { changeWordsInLocalStorage } from '../../../../../redux/starredWords/starredWordsSlice';
-import { InfoMessage, WordListItem } from '../../../../../components';
-import { text } from '../../../../../shared/text';
+import { InfoMessage, WordListItem } from 'components/index';
+import { useFilteredWords } from 'features/wordsDictionary/hooks/useFilteredWords';
+import { useAppSelector, useAppDispatch } from 'shared/hooks';
+import { text } from 'shared/text';
+import { changeWordsInLocalStorage } from 'storage/starredWords/starredWordsSlice';
 import { DropArea } from '../../DropArea/DropArea';
-import { useAppDispatch } from '../../../../../shared/hooks/useAppDispatch';
-import { useAppSelector } from '../../../../../shared/hooks/useAppSelector';
 
 import './StarredWordsContainer.scss';
 

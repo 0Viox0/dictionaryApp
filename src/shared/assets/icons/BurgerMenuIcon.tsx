@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { IconProps } from '../../types';
 
-// в папке assets тоже можно добавить index.ts с экспортом иконок
 export const BurgerMenuIcon: FC<IconProps> = ({
     width = 24,
     height = 24,

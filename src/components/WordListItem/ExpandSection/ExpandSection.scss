@@ -1,3 +1,5 @@
+@use 'shared/styles/variables';
+
 $paddingLeftRight: 10px;
 
 .expand-section {
@@ -8,6 +10,28 @@ $paddingLeftRight: 10px;
     overflow: hidden;
 
     transition: height 0.2s ease;
+
+    .line {
+        content: '';
+
+        position: relative;
+
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 97%;
+        height: 2px;
+
+        margin-bottom: 10px;
+
+        background-color: variables.$darkGray;
+    }
+
+    .not-available-info {
+        margin-top: 5px;
+        margin-left: 22px;
+        font-size: 1rem;
+    }
 
     h1 {
         font-size: 1.3rem;
@@ -31,10 +55,4 @@ $paddingLeftRight: 10px;
             }
         }
     }
-}
-
-.not-available-info {
-    margin-top: 5px;
-    margin-left: 22px;
-    font-size: 1rem;
 }

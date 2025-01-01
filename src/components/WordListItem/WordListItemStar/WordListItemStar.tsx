@@ -1,10 +1,9 @@
 import { FC, MouseEvent, useEffect, useState } from 'react';
-import { WordDefinition } from '../../../redux/words/types';
-import { toggleWordInLocalStorage } from '../../../redux/starredWords/starredWordsSlice';
-import { StarIcon } from '../../../shared/assets/icons/StarIcon';
-import { useAppDispatch } from '../../../shared/hooks/useAppDispatch';
-import { useAppSelector } from '../../../shared/hooks/useAppSelector';
-import { selectStarredWords } from '../../../redux/starredWords/selectors';
+import { StarIcon } from 'shared/assets';
+import { useAppSelector, useAppDispatch } from 'shared/hooks';
+import { selectStarredWords } from 'storage/starredWords/selectors';
+import { toggleWordInLocalStorage } from 'storage/starredWords/starredWordsSlice';
+import { WordDefinition } from 'storage/words/types';
 
 import './WordListItemStar.scss';
 
@@ -17,8 +16,7 @@ export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     const starredWords = useAppSelector(selectStarredWords);
     const dispatch = useAppDispatch();
 
-    // handleStarClick
-    const handleStarOnClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const handleStartClick = (event: MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         dispatch(toggleWordInLocalStorage(wordInfo));
     };
@@ -32,7 +30,7 @@ export const WordListItemStar: FC<WordListItemStarProps> = ({ wordInfo }) => {
     }, [starredWords, wordInfo.name]);
 
     return (
-        <button className="star-container" onClick={handleStarOnClick}>
+        <button className="star-container" onClick={handleStartClick}>
             <StarIcon
                 width={35}
                 height={35}

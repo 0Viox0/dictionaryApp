@@ -1,7 +1,6 @@
-// не нужно указывать расширение файла `.tsx`
-export { InputSearchWordContainer } from './InputSearchWordContainer/InputSearchWordContainer.tsx';
-export { InputField } from './InputField/InputField.tsx';
-export { Header } from './Header/Header.tsx';
-export { Layout } from './Layout/Layout.tsx';
-export { InfoMessage } from './InfoMessage/InfoMessage.tsx';
-export { WordListItem } from './WordListItem/WordListItem.tsx';
+export { InputSearchWordContainer } from './InputSearchWordContainer/InputSearchWordContainer';
+export { InputField } from './InputField/InputField';
+export { Header } from './Header/Header';
+export { Layout } from './Layout/Layout';
+export { InfoMessage } from './InfoMessage/InfoMessage';
+export { WordListItem } from './WordListItem/WordListItem';

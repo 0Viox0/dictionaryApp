@@ -1,5 +1,5 @@
-import { InputField, InputSearchWordContainer } from '../components';
-import { DictionaryWordsContainer } from '../features/wordsDictionary';
+import { InputSearchWordContainer, InputField } from 'components';
+import { DictionaryWordsContainer } from 'features/wordsDictionary';
 
 export const Home = () => {
     return (

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { text } from '../../shared/text';
-import { StarIcon } from '../../shared/assets/icons/StarIcon';
+import { StarIcon } from 'shared/assets';
+import { text } from 'shared/text';
 
 import './Header.scss';
 

@@ -25,7 +25,7 @@ export const fetchWordsData = async (query: string) => {
         if (error instanceof Error) {
             console.log(error.message, error);
         } else {
-            console.log('An unknown error has occured', error);
+            console.log('An unknown error has occurred', error);
         }
 
         return undefined;

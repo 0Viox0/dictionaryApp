@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useAppDispatch } from '../../../shared/hooks/useAppDispatch';
-import { useAppSelector } from '../../../shared/hooks/useAppSelector';
+import { useAppSelector, useAppDispatch } from 'shared/hooks';
+import { text } from 'shared/text';
 import {
     selectCurrentSearchQuery,
     selectLoadingWords,
-} from '../../../redux/words/selectors';
-import { fetchWordsAsync } from '../../../redux/words/thunk';
-import { text } from '../../../shared/text';
+} from 'storage/words/selectors';
+import { fetchWordsAsync } from 'storage/words/thunk';
 
 export const useInfoMessageWithWords = () => {
     const searchQuery = useAppSelector(selectCurrentSearchQuery);
@@ -28,12 +27,12 @@ export const useInfoMessageWithWords = () => {
 
     useEffect(() => {
         setDisplayInfoMessage(true);
+
         if (isSearchQueryEmpty) {
             setInfoMessageText(text.searchQueryEmpty);
         } else if (isLoading) {
             setInfoMessageText(text.loadingMessage);
-        // неправильное условие
-        } else if (isError && !words?.length) {
+        } else if (isError || !words?.length) {
             setInfoMessageText(text.nothingFound);
         } else {
             setDisplayInfoMessage(false);

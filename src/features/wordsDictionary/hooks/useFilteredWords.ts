@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import { useEffect, useState } from 'react';
-import { PartOfSpeech, partsOfSpeech } from '../types/types';
 import { useSearchParams } from 'react-router-dom';
-import { WordDefinition } from '../../../redux/words/types';
+import { RootState } from 'storage/store';
+import { WordDefinition } from 'storage/words/types';
+import { PartOfSpeech, partsOfSpeech } from '../types/types';
 
 export const useFilteredWords = (words: WordDefinition[] | undefined) => {
     const searchQuery = useSelector(

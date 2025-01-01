@@ -1,8 +1,8 @@
-import { InputSearchWordContainer } from '../components';
+import { InputSearchWordContainer } from 'components';
 import {
     StarredSearchContainer,
     StarredWordsContainer,
-} from '../features/wordsDictionary';
+} from 'features/wordsDictionary';
 
 export const Starred = () => {
     return (

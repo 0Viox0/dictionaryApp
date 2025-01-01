@@ -1,9 +1,9 @@
 import { Dispatch, FC, useEffect, useState } from 'react';
-import { WordDefinition } from '../../redux/words/types';
-import { BurgerMenuIcon } from '../../shared/assets/icons/BurgerMenuIcon';
-import { WordListItemStar } from './WordListItemStar/WordListItemStar';
+import { BurgerMenuIcon } from 'shared/assets';
+import { classNames } from 'shared/utils/classNames';
+import { WordDefinition } from 'storage/words/types';
 import { ExpandSection } from './ExpandSection/ExpandSection';
-import { classNames, ClassNamesArgs } from '../../shared/utils/classNames';
+import { WordListItemStar } from './WordListItemStar/WordListItemStar';
 
 import './WordListItem.scss';
 
@@ -28,18 +28,14 @@ export const WordListItem: FC<WordListItemProps> = ({
     };
 
     const handleOnDragStart = () => {
-        if (isDraggable) {
-            // оператор `!` стоит использовать как можно реже, так как могут быть баги
-            // лучше добавить в условии проверку на наличие setActiveCard
-            setActiveCard!(wordListItemInfo.name);
+        if (isDraggable && setActiveCard) {
+            setActiveCard(wordListItemInfo.name);
         }
     };
 
     const handleOnDragEnd = () => {
-        if (isDraggable) {
-            // оператор `!` стоит использовать как можно реже, так как могут быть баги
-            // лучше добавить в условии проверку на наличие setActiveCard
-            setActiveCard!(wordListItemInfo.name);
+        if (isDraggable && setActiveCard) {
+            setActiveCard(wordListItemInfo.name);
         }
     };
 
@@ -48,8 +44,7 @@ export const WordListItem: FC<WordListItemProps> = ({
         'expanded-padding-bottom': isExpanded,
         'margin-bottom': !isDraggable,
         draggable: isDraggable,
-        // нет необходимости в `as ClassNamesArgs`, лучше убрать
-    } as ClassNamesArgs);
+    });
 
     return (
         <div

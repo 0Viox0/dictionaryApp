@@ -1,8 +1,9 @@
 import { FC, MouseEvent, useEffect, useRef } from 'react';
-import { WordDefinition } from '../../../redux/words/types';
-import { text } from '../../../shared/text';
+import { WordDefinition } from 'storage/words/types';
+import { text } from 'shared/text';
 
 import './ExpandSection.scss';
+import { classNames } from 'shared/utils/classNames';
 
 type ExpandSectionProps = {
     wordListItemInfo: WordDefinition;
@@ -23,10 +24,14 @@ export const ExpandSection: FC<ExpandSectionProps> = ({
         }
     }, [isExpanded]);
 
+    const expandSectionClass = classNames({
+        'expand-section': true,
+        hidden: !isExpanded,
+    });
+
     return (
         <div
-            // используй функцию classNames
-            className={`expand-section ${!isExpanded && 'hidden'} `}
+            className={expandSectionClass}
             ref={sectionRef}
             onClick={(event: MouseEvent<HTMLDivElement>) =>
                 event.stopPropagation()

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { text } from '../../../../shared/text';
+import { classNames } from 'shared/utils/classNames';
+import { text } from 'shared/text';
 
 import './DropArea.scss';
 
@@ -19,9 +20,14 @@ export const DropArea = ({ onDrop }: { onDrop: () => void }) => {
         setShowDrop(false);
     };
 
+    const dropAreaClass = classNames({
+        'drop-area-wrapper': showDrop,
+        hide_drop: !showDrop,
+    });
+
     return (
         <div
-            className={showDrop ? 'drop-area-wrapper' : 'hide_drop'}
+            className={dropAreaClass}
             onDragEnter={() => setShowDrop(true)}
             onDragLeave={handleDragLeave}
             onDragOver={(e) => e.preventDefault()}

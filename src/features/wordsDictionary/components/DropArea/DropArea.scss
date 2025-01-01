@@ -1,45 +1,44 @@
-@use '../../../../shared/styles/variables';
+@use 'shared/styles/variables';
 
-@mixin appearDissapearTransition {
+@mixin appearDisappearTransition {
     transition: all 0.2s ease;
 }
 
 .drop-area-wrapper {
     padding: 15px 0px;
     overflow: hidden;
-}
 
-// вкладывай все дочерние элементы в родительский (.drop-area-wrapper)
-.drop-area {
-    width: 100%;
-    height: 50px;
+    &.hide_drop {
+        opacity: 0;
 
-    background-color: variables.$darkGray;
+        height: 15px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        @include appearDisappearTransition();
 
-    border-radius: variables.$borderRadius;
-
-    opacity: 1;
-
-    @include appearDissapearTransition();
-
-    > div {
-        font-size: 1.3rem;
-        opacity: 0.5;
+        * {
+            height: 0px;
+        }
     }
-}
 
-.hide_drop {
-    opacity: 0;
+    .drop-area {
+        width: 100%;
+        height: 50px;
 
-    height: 15px;
+        background-color: variables.$darkGray;
 
-    @include appearDissapearTransition();
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    * {
-        height: 0px;
+        border-radius: variables.$borderRadius;
+
+        opacity: 1;
+
+        @include appearDisappearTransition();
+
+        > div {
+            font-size: 1.3rem;
+            opacity: 0.5;
+        }
     }
 }

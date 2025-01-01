@@ -2,7 +2,10 @@ import { useEffect, useRef } from 'react';
 
 type DebouncedFunction = (...args: unknown[]) => void;
 
-const useDebouncedFunction = (callback: DebouncedFunction, delay = 500) => {
+export const useDebouncedFunction = (
+    callback: DebouncedFunction,
+    delay = 500,
+) => {
     const timeoutRef = useRef<number | null>(null);
 
     const debouncedFunction = (...args: unknown[]) => {
@@ -25,5 +28,3 @@ const useDebouncedFunction = (callback: DebouncedFunction, delay = 500) => {
 
     return debouncedFunction;
 };
-
-export default useDebouncedFunction;
